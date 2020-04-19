@@ -1,6 +1,7 @@
 import pyttsx3
 import speech_recognition as sr
 import datetime
+import pyaudio
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -30,11 +31,12 @@ def Take():  # It takes input from user's Mircophone and convert it into string
     with sr.Microphone() as source:
         print('Listening...')
         r.pause_threshold = 1
+
         audio = r.listen(source)
 
     try:
         print('Recognising')
-        query = r.recognize_google(audio, Language='en-in')
+        query = r.recognize_google(audio)
         print(f'User said {query} \n')
     except Exception as e:
         print(e)
