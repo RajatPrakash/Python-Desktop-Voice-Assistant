@@ -27,17 +27,17 @@ def WishMe():
 
 
 def Take():  # It takes input from user's Mircophone and convert it into string
-    r = sr.Recognizer()
+    r = sr.Recognizer()  # this recognizer class will actually help our code to under our language
 
     with sr.Microphone() as source:
         print('Listening...')
-        r.pause_threshold = 1
-
+        r.energy_threshold = 2000
+        r.pause_threshold = 0.8
         audio = r.listen(source)
 
     try:
-        print('Recognising')
-        query = r.recognize_google(audio)
+        print('Recognizing')
+        query = r.recognize_google(audio, language='en-in')
         print(f'User said {query} \n')
         speak(query)
     except Exception as e:
