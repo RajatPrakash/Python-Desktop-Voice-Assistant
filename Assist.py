@@ -3,6 +3,8 @@ import speech_recognition as sr
 import datetime
 import wikipedia
 import pyaudio
+import webbrowser
+import os
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -39,7 +41,7 @@ def Take():  # It takes input from user's Mircophone and convert it into string
     try:
         print('Recognizing')
         query = r.recognize_google(audio, language='en-in')
-        #  print(f'User said {query} \n')
+        print(f'User said {query} \n')
 
     except Exception as e:
         print(e)
@@ -51,17 +53,26 @@ def Take():  # It takes input from user's Mircophone and convert it into string
 
 if __name__ == '__main__':
     WishMe()
-    while True:
-    query = TakeCommand().lower()
-
     #  Logic for executing task based on query
+    while True:
+        query = Take().lower()
         if 'wikipedia' in query:
             speak('Searching Wikipedia...')
-            query = query.replace('wikipedia','')
-            results = wikipedia.summary(query,sentence = 3)
+            query = query.replace('wikipedia', '')
+            results = wikipedia.summary(query,  sentences=3)
             speak('According to Wikipedia')
             speak(results)
+        elif 'open youtube' in query:
+            webbrowser.open('youtube.com')
+        elif 'open amazon' in query:
+            webbrowser.open('amazon.com')
 
+        elif 'temprature' or 'wheather' in query:
+            webbrowser.open('https://www.accuweather.com/en/in/ghaziabad/206683/current-weather/206683')
+        elif 'play music' in query:
+            music = 'C:\\Users\\rajat\\Downloads\\Music'
+            songs = os.listdir(music)
+            os.startfile(os.path.join(music, songs[0]))
 
 
 
