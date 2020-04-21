@@ -1,6 +1,7 @@
 import pyttsx3
 import speech_recognition as sr
 import datetime
+import wikipedia
 import pyaudio
 
 engine = pyttsx3.init('sapi5')
@@ -31,15 +32,15 @@ def Take():  # It takes input from user's Mircophone and convert it into string
 
     with sr.Microphone() as source:
         print('Listening...')
-        r.energy_threshold = 2000
-        r.pause_threshold = 0.8
+        r.energy_threshold = 3000
+        r.pause_threshold = 1
         audio = r.listen(source)
 
     try:
         print('Recognizing')
         query = r.recognize_google(audio, language='en-in')
-        print(f'User said {query} \n')
-        speak(query)
+        #  print(f'User said {query} \n')
+
     except Exception as e:
         print(e)
         print('Say that Again .......')
@@ -50,4 +51,17 @@ def Take():  # It takes input from user's Mircophone and convert it into string
 
 if __name__ == '__main__':
     WishMe()
-    Take()
+    while True:
+    query = TakeCommand().lower()
+
+    #  Logic for executing task based on query
+        if 'wikipedia' in query:
+            speak('Searching Wikipedia...')
+            query = query.replace('wikipedia','')
+            results = wikipedia.summary(query,sentence = 3)
+            speak('According to Wikipedia')
+            speak(results)
+
+
+
+
