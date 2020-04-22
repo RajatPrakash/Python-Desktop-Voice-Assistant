@@ -3,8 +3,10 @@ import speech_recognition as sr
 import datetime
 import wikipedia
 import pyaudio
+import Restart as r
 import webbrowser
 import os
+import Shut as s
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -45,7 +47,7 @@ def Take():  # It takes input from user's Mircophone and convert it into string
 
     except Exception as e:
         print(e)
-        print('Say that Again .......')
+        # speak('Say that Again ...')
         return 'None'
 
     return query
@@ -54,25 +56,51 @@ def Take():  # It takes input from user's Mircophone and convert it into string
 if __name__ == '__main__':
     WishMe()
     #  Logic for executing task based on query
+    ChromePath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+    webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(ChromePath))
     while True:
         query = Take().lower()
         if 'wikipedia' in query:
             speak('Searching Wikipedia...')
             query = query.replace('wikipedia', '')
-            results = wikipedia.summary(query,  sentences=3)
+            results = wikipedia.summary(query, sentences=3)
             speak('According to Wikipedia')
             speak(results)
-        elif 'open youtube' in query:
-            webbrowser.open('youtube.com')
-        elif 'open amazon' in query:
-            webbrowser.open('amazon.com')
-
-        elif 'temprature' or 'wheather' in query:
-            webbrowser.open('https://www.accuweather.com/en/in/ghaziabad/206683/current-weather/206683')
+        elif 'youtube' in query:
+            url = 'www.youtube.com'
+            webbrowser.get('chrome').open_new_tab(url)
+        elif 'netflix' in query:
+            url = 'www.netflix.com'
+            webbrowser.get('chrome').open_new_tab(url)
+        elif 'amazon' in query:
+            url = 'www.amazon.com'
+            webbrowser.get('chrome').open_new_tab(url)
         elif 'play music' in query:
             music = 'C:\\Users\\rajat\\Downloads\\Music'
             songs = os.listdir(music)
             os.startfile(os.path.join(music, songs[0]))
+        elif 'time' in query:
+            strTime = datetime.datetime.now().strftime('%H:%M')
+            speak(f'sir, The time is {strTime}')
+        elif 'google' in query:
+            ChromePath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+            os.startfile(ChromePath)
+        elif 'python' in query:
+            PythonPath = "C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.2\\bin\\pycharm64.exe"
+            os.startfile(PythonPath)
+        elif 'sql' in query:
+            SqlPath = "C:\\Program Files (x86)\\Microsoft SQL Server Management Studio 18\\Common7\\IDE\\Ssms.exe"
+            os.startfile(SqlPath)
+        elif 'mynet' in query:
+            EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+            os.startfile(EdgePath)
+        elif 'github' in query:
+            GitPath = "C:\\Program Files\\Git\\git-bash.exe"
+            os.startfile(GitPath)
+        elif 'shutdown please' in query:
+            speak('Closing...')
+            s.shutdown()
 
-
-
+        elif 'restart please' in query:
+            speak('Restarting...')
+            r.restart()
