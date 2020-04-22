@@ -104,3 +104,4 @@ if __name__ == '__main__':
         elif 'restart please' in query:
             speak('Restarting...')
             r.restart()
+>>>>>>> ad2be76d956136970b716fe45b92469d5141ad22
