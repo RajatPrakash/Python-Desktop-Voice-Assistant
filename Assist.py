@@ -71,6 +71,9 @@ if __name__ == '__main__':
             speak(results)
         elif 'who are you' in query:
             speak('I am your Personal Assistant designed to make your work simpler')
+        elif 'thank you' in query:
+            speak('happy to help ')
+
         elif 'youtube' in query:
             url = 'www.youtube.com'
             webbrowser.get('chrome').open_new_tab(url)
@@ -111,6 +114,10 @@ if __name__ == '__main__':
             EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
             os.startfile(EdgePath)
             speak('Opening Edge Browser ')
+        elif 'notepad' in query:
+            NotePadPath = "C:\\Program Files\\Notepad++\\notepad++.exe"
+            os.startfile(NotePadPath)
+            speak('Opening Notepad ')
         elif 'github' in query:
             GitPath = "C:\\Program Files\\Git\\git-bash.exe"
             os.startfile(GitPath)
