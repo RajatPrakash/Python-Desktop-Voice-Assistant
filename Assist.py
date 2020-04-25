@@ -8,6 +8,7 @@ import webbrowser
 import os
 import Shut as s
 import sys
+import requests
 
 sys.path.append('..')
 
@@ -34,7 +35,21 @@ def WishMe():
     speak('I am Up and Ready to help you!')
 
 
-def Take():  # It takes input from user's Mircophone and convert it into string
+# checking for internet connection of system
+
+def connected_to_internet(url='http://www.google.com/', timeout=2):
+    try:
+        _ = requests.get(url, timeout=timeout)
+
+    except requests.ConnectionError:
+        speak("Sir, I think internet is off, I Need Internet Connectivity to work properly.")
+        speak('Switching My Self Off, Good day')
+        quit()
+
+
+# It takes input from user's Mircophone and convert it into string
+
+def Take():
     r = sr.Recognizer()  # this recognizer class will actually help our code to under our language
 
     with sr.Microphone() as source:
@@ -51,6 +66,7 @@ def Take():  # It takes input from user's Mircophone and convert it into string
     except Exception as e:
         print(e)
         # speak('Say that Again ...')
+        connected_to_internet()
         return 'None'
 
     return query
@@ -109,11 +125,11 @@ if __name__ == '__main__':
 
             # working on accessing the specif folder in windows file system
             # elif 'download' in query:
-            DownloadPath = "C:/Downloads"
-            DownloadPath = os.path.realpath(DownloadPath)
-            os.startfile(DownloadPath)
-            webbrowser.open(DownloadPath)
-            speak('Opening')
+            # DownloadPath = "C:/Downloads"
+            # DownloadPath = os.path.realpath(DownloadPath)
+            # os.startfile(DownloadPath)
+            # webbrowser.open(DownloadPath)
+            # speak('Opening')
         elif 'sequel server' in query:
             SqlPath = "C:\\Program Files (x86)\\Microsoft SQL Server Management Studio 18\\Common7\\IDE\\Ssms.exe"
             os.startfile(SqlPath)
@@ -130,8 +146,8 @@ if __name__ == '__main__':
             GitPath = "C:\\Program Files\\Git\\git-bash.exe"
             os.startfile(GitPath)
             speak('Opening GitHub ')
-        elif 'shut down please' in query:
-            speak('Closing...')
+        elif 'sleep now' in query:
+            speak('Closing')
             s.shutdown()
         elif 'restart please' in query:
             speak('Restarting...')
