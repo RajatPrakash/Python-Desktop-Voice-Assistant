@@ -106,6 +106,14 @@ if __name__ == '__main__':
             PythonPath = "C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.2\\bin\\pycharm64.exe"
             os.startfile(PythonPath)
             speak('Opening Python Please Wait ')
+
+            # working on accessing the specif folder in windows file system
+            # elif 'download' in query:
+            DownloadPath = "C:/Downloads"
+            DownloadPath = os.path.realpath(DownloadPath)
+            os.startfile(DownloadPath)
+            webbrowser.open(DownloadPath)
+            speak('Opening')
         elif 'sequel server' in query:
             SqlPath = "C:\\Program Files (x86)\\Microsoft SQL Server Management Studio 18\\Common7\\IDE\\Ssms.exe"
             os.startfile(SqlPath)
@@ -128,4 +136,3 @@ if __name__ == '__main__':
         elif 'restart please' in query:
             speak('Restarting...')
             r.restart()
-
