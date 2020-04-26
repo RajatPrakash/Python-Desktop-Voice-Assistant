@@ -9,6 +9,8 @@ import os
 import Shut as s
 import sys
 import requests
+import subprocess, io
+
 
 sys.path.append('..')
 
@@ -123,13 +125,15 @@ if __name__ == '__main__':
             os.startfile(PythonPath)
             speak('Opening Python Please Wait ')
 
-            # working on accessing the specif folder in windows file system
-            # elif 'download' in query:
-            # DownloadPath = "C:/Downloads"
-            # DownloadPath = os.path.realpath(DownloadPath)
-            # os.startfile(DownloadPath)
-            # webbrowser.open(DownloadPath)
-            # speak('Opening')
+        # working on accessing the specific folder in windows file system
+        elif 'downloads' in query:
+            path = "C:\\Users\\rajat\\Downloads"
+            subprocess.Popen(f'explorer {os.path.realpath(path)}')
+            speak('Opening Downloads Folder ')
+        elif 'movies' in query:
+            External_HardDrive = "F:\\Movies\\HollyWood"
+            subprocess.Popen(f'explorer {os.path.realpath(External_HardDrive)}')
+            speak('Opening Movies ')
         elif 'sequel server' in query:
             SqlPath = "C:\\Program Files (x86)\\Microsoft SQL Server Management Studio 18\\Common7\\IDE\\Ssms.exe"
             os.startfile(SqlPath)
@@ -138,6 +142,11 @@ if __name__ == '__main__':
             EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
             os.startfile(EdgePath)
             speak('Opening Edge Browser ')
+        elif 'close browser' in query:
+            EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+            p = subprocess.Popen(EdgePath)
+            p.terminate()
+            speak('Closing Edge Browser ')
         elif 'notepad' in query:
             NotePadPath = "C:\\Program Files\\Notepad++\\notepad++.exe"
             os.startfile(NotePadPath)
