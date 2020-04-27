@@ -108,6 +108,24 @@ if __name__ == '__main__':
             url = 'https://watch.tatasky.com/live-tv?pageType=live-tv'
             webbrowser.get('chrome').open_new_tab(url)
             speak('Opening Tata Sky ')
+        elif 'gmail' in query:
+            EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+            webbrowser.register('edge', None, webbrowser.BackgroundBrowser(EdgePath))
+            url = 'https://mail.google.com/mail/u/0/#inbox'
+            webbrowser.get('edge').open_new_tab(url)
+            speak('Opening your mails ')
+        elif 'remote github' in query:
+            EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+            webbrowser.register('edge', None, webbrowser.BackgroundBrowser(EdgePath))
+            url = 'https://github.com/RajatPrakash'
+            webbrowser.get('edge').open_new_tab(url)
+            speak('Opening your Remote Github  ')
+        elif 'udemy' in query:
+            EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+            webbrowser.register('edge', None, webbrowser.BackgroundBrowser(EdgePath))
+            url = 'https://www.udemy.com/home/my-courses/learning/'
+            webbrowser.get('edge').open_new_tab(url)
+            speak('Opening udemy  ')
         elif 'play music' in query:
             music = 'C:\\Users\\rajat\\Downloads\\Music'
             songs = os.listdir(music)
@@ -134,7 +152,7 @@ if __name__ == '__main__':
             External_HardDrive = "F:\\Movies\\HollyWood"
             subprocess.Popen(f'explorer {os.path.realpath(External_HardDrive)}')
             speak('Opening Movies ')
-        elif 'sequel server' in query:
+        elif 'sql server' in query:
             SqlPath = "C:\\Program Files (x86)\\Microsoft SQL Server Management Studio 18\\Common7\\IDE\\Ssms.exe"
             os.startfile(SqlPath)
             speak('Opening Sequel Server Please Wait ')
