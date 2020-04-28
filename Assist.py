@@ -114,7 +114,7 @@ if __name__ == '__main__':
             url = 'https://mail.google.com/mail/u/0/#inbox'
             webbrowser.get('edge').open_new_tab(url)
             speak('Opening your mails ')
-        elif 'remote github' in query:
+        elif 'remote repo' in query:
             EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
             webbrowser.register('edge', None, webbrowser.BackgroundBrowser(EdgePath))
             url = 'https://github.com/RajatPrakash'
@@ -169,7 +169,7 @@ if __name__ == '__main__':
             NotePadPath = "C:\\Program Files\\Notepad++\\notepad++.exe"
             os.startfile(NotePadPath)
             speak('Opening Notepad ')
-        elif 'github' in query:
+        elif ' local repo' in query:
             GitPath = "C:\\Program Files\\Git\\git-bash.exe"
             os.startfile(GitPath)
             speak('Opening GitHub ')
