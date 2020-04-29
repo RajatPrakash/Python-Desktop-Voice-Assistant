@@ -126,6 +126,12 @@ if __name__ == '__main__':
             url = 'https://www.udemy.com/home/my-courses/learning/'
             webbrowser.get('edge').open_new_tab(url)
             speak('Opening udemy  ')
+        elif 'teams' in query:
+            Teams = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+            webbrowser.register('edge', None, webbrowser.BackgroundBrowser(Teams))
+            url = 'https://teams.microsoft.com/_?culture=en-us&country=US&lm=deeplink&lmsrc=homePageWeb&cmpid=WebSignIn#/conversations/19:44c21104-ede3-4209-9a66-9618c05cbaa9_bf433243-0fa3-437c-beba-192336dcefee@unq.gbl.spaces?ctx=chat'
+            webbrowser.get('edge').open_new_tab(url)
+            speak('Opening teams  ')
         elif 'play music' in query:
             music = 'C:\\Users\\rajat\\Downloads\\Music'
             songs = os.listdir(music)
