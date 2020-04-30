@@ -11,7 +11,6 @@ import sys
 import requests
 import subprocess, io
 
-
 sys.path.append('..')
 
 engine = pyttsx3.init('sapi5')
@@ -166,11 +165,12 @@ if __name__ == '__main__':
             EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
             os.startfile(EdgePath)
             speak('Opening Edge Browser ')
-        elif 'close browser' in query:
-            EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
-            p = subprocess.Popen(EdgePath)
-            p.terminate()
-            speak('Closing Edge Browser ')
+        # Working On Closing a Particular Application
+        # elif 'close browser' in query:
+        #   EdgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+        #    p = subprocess.Popen(EdgePath)
+        #   p.terminate()
+        #   speak('Closing Edge Browser ')
         elif 'notepad' in query:
             NotePadPath = "C:\\Program Files\\Notepad++\\notepad++.exe"
             os.startfile(NotePadPath)
