@@ -1,0 +1,1 @@
+"B:\Google CEO-Rajat Prakash\New folder\Scripts\python.exe" "B:\Google CEO-Rajat Prakash\Desktop Assistant Project\Assist.py"
